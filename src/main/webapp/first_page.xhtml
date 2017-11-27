@@ -6,6 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
 
     <f:view contentType="text/html">
+        <h:outputStylesheet library="css" name="app_style.css"/>
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
@@ -17,13 +18,13 @@
 
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                <p:layoutUnit position="north" size="100" resizable="false" closable="true" collapsible="true">
                     <ui:insert name="app_header">
                         <ui:include src="/app_template/divs/app_header.xhtml"/>
                     </ui:insert>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true">
                     <ui:insert name="app_footer">
                         <ui:include src="/app_template/divs/app_footer.xhtml"/>  
                     </ui:insert>
@@ -43,7 +44,11 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    Welcome to PrimeFaces
+                    <p:dataTable>
+                        <p:column headerText="ID">#{student.id}</p:column>
+                        <p:column headerText="First Name">#{student.firstName}</p:column>
+                        <p:column headerText="School">#{student.school}</p:column>
+                    </p:dataTable>
                 </p:layoutUnit>
 
             </p:layout>
