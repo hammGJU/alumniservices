@@ -18,11 +18,15 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Header
+                    <ui:insert name="app_header">
+                        <ui:include src="/app_template/divs/app_header.xhtml"/>
+                    </ui:insert>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
+                    <ui:insert name="app_footer">
+                        <ui:include src="/app_template/divs/app_footer.xhtml"/>  
+                    </ui:insert>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="west" size="175" header="Left" collapsible="true">

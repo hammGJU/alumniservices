@@ -59,4 +59,27 @@ public class LoginBean implements Serializable {
         }
     }
 
+    public void logout() throws Exception {
+        try {
+            // Release and close database resources and connections 
+            if (conn != null) {
+                if (!conn.getAutoCommit()) {
+                    conn.rollback();
+                    conn.setAutoCommit(true);
+                }
+
+                conn.close();
+                conn = null;
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            setPassword(null);
+            setUsername(null);
+
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.getExternalContext().invalidateSession();
+        }
+    }
+
 }
